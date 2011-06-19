@@ -31,4 +31,4 @@ Utils.as
 A serie of usefull functions
 
 ValidateForms.as
-A very usefull class to validate flash forms
+A very usefull class to validate flash forms. It validates basic info like string, number, passwords, dates, urls, emails
