@@ -1,0 +1,34 @@
+Author: Fausto Carrera
+Date: 2010-06-05 (ver 1.0)
+Email: yo@faustocarrera.com.ar
+Web: http://faustocarrera.com.ar
+License: http://opensource.org/licenses/gpl-license.php GNU Public License
+Copyright: Fausto Carrera
+
+List of classes:
+- CustomLoader.as
+- CustomXML.as
+- Scrollbar.as
+- Utils.as
+- ValidateForms.as
+
+Hi everyone.
+This AS3 classes, were developed to accomplish basic tasks during the development of Flash websites, trying to be as flexible as possible.
+This 5 classes helped me for the past 3 years, hope you find it usefull too.
+
+CustomLoader.as
+Loads a serie of images or movieclips one ofter another.
+With custom listeners to catch errors.
+
+CustomXML
+Loads a XML file passing varibles by GET or POST, so you can connect with any Server Side scripts that generates XML.
+WIth custom listeners to catch errors.
+
+Scrollbar.as
+A simple script to add a scrollbar to any movieclip, the assets of the scrollbar are editable from within the flash file
+
+Utils.as
+A serie of usefull functions
+
+ValidateForms.as
+A very usefull class to validate flash forms
