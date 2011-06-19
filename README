@@ -30,5 +30,14 @@ A simple script to add a scrollbar to any movieclip, the assets of the scrollbar
 Utils.as
 A serie of usefull functions
 
+function removeChilds(target:Movieclip)
+	- removes any child (sprite) from the target movieclip
+function loadMovieClip(movie:String, target:MovieClip)
+	- load an image or swf file inside the target movieclip
+function getURL(url:String, target:String)
+	- replacement of getURL of AS2
+function debugArray(arr:Array)
+	- traces each element of an array
+
 ValidateForms.as
-A very usefull class to validate flash forms. It validates basic info like string, number, passwords, dates, urls, emails
+A very usefull class to validate flash forms. It validates basic info like string, number, passwords, dates, urls, emails.

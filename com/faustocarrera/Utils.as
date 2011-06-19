@@ -90,7 +90,7 @@ package com.faustocarrera
 		
 		// redir to external page
 		
-		public function loadPage(url:String, target:String):void {
+		public function getURL(url:String, target:String):void {
 			var req:URLRequest = new URLRequest(url);
 			navigateToURL(req, target);
 		}
