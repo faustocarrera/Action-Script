@@ -16,6 +16,8 @@ Hi everyone.
 This AS3 classes, were developed to accomplish basic tasks during the development of Flash websites, trying to be as flexible as possible.
 This 5 classes helped me for the past 3 years, hope you find it usefull too.
 
+Feel free to change, re-arrenge and modify any of this classes.
+
 CustomLoader.as
 Loads a serie of images or movieclips one ofter another.
 With custom listeners to catch errors.
