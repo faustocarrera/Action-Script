@@ -179,7 +179,7 @@ package com.faustocarrera
 		
 		private function clickHandle(e:MouseEvent) 
 		{
-			var rect:Rectangle = new Rectangle(_background.x-(_ruler.width/2), minY, 0, maxY);
+			var rect:Rectangle = new Rectangle(_background.x, minY, 0, maxY);
 			_ruler.startDrag(false, rect);
 		}
 		

@@ -50,17 +50,15 @@ package com.faustocarrera
 		// remove childs
 		public function removeChilds(target:MovieClip):void {
 			if (target.numChildren > 0) {
-				var i:int = 0;
-				for (i; i<target.numChildren; i++) {
-					var child:DisplayObject = target.getChildAt(i);
+				while (target.numChildren > 0) {
+					var child:DisplayObject = target.getChildAt(0);
 					target.removeChild(child);
 				}
 				//trace(target.name+" now have "+target.numChildren+" children{s}");
 			}
 		}
 		
-		// load movies
-		
+		// load external movies
 		public function loadMovieClip(movie:String, target:MovieClip):void {
 			this.removeChilds(target);
 			//trace("Loading movie: " + movie + " on movieclip " + target);
@@ -80,19 +78,29 @@ package com.faustocarrera
 			}
 		}
 		
+		// generate random filename
+		public function randomFileName(strlen:Number, ext:String="jpg"):String {
+			var chars:String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			var num_chars:Number = chars.length - 1;
+			var randomChar:String = "";
+			for (var i:Number = 0; i < strlen; i++) {
+				randomChar += chars.charAt(Math.floor(Math.random() * num_chars));
+			}
+			return randomChar + "." + ext;
+		}
+		
+		// redir to external page
+		public function getURL(url:String, target:String):void {
+			var req:URLRequest = new URLRequest(url);
+			navigateToURL(req, target);
+		}
+		
 		// debug array
 		public function debugArray(arr:Array):void {
 			for(var k:int = 0; k < arr.length; k++) {
 				trace(arr[k]);
 			}
 			trace("====================");
-		}
-		
-		// redir to external page
-		
-		public function getURL(url:String, target:String):void {
-			var req:URLRequest = new URLRequest(url);
-			navigateToURL(req, target);
 		}
 	}
 }
