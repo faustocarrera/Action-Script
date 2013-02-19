@@ -57,6 +57,7 @@ package com.faustocarrera
 		// Private Properties:
 
 		private var files_arr:Array = [];
+		private var total_files:int = 0;
 		private var counter:int = 0;
 		private var file_loader:Loader;
 
@@ -64,6 +65,13 @@ package com.faustocarrera
 
 		public function CustomLoader()
 		{
+			// reset
+			this.current_container = null;
+			this.current_address = "";
+			this.current_progress = 0;
+			this.files_arr = [];
+			this.counter = 0;
+			// listeners
 			this.file_loader = new Loader();
 			this.file_loader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS, this.onProgress);
 			this.file_loader.contentLoaderInfo.addEventListener(Event.COMPLETE, this.onComplete);
@@ -80,6 +88,7 @@ package com.faustocarrera
 		public function addFile(src:String, target:MovieClip):void
 		{
 			this.files_arr.push([src, target]);
+			this.total_files++;
 		}
 
 		public function startLoad():void
@@ -89,7 +98,7 @@ package com.faustocarrera
 			this.current_container = this.files_arr[this.counter][1];
 			this.loadFile();
 		}
-
+		
 		// Private Methods:
 
 		private function loadFile():void
@@ -115,12 +124,8 @@ package com.faustocarrera
 				this.current_container = this.files_arr[this.counter][1];
 				this.loadFile();
 			} else {
-				this.current_container = null;
-				this.current_address = "";
-				this.current_progress = 0;
-				this.files_arr = [];
-				this.counter = 0;
-				//
+				dispatchEvent(new Event("onLoaderComplete"));
+				// remove listeners
 				this.file_loader.contentLoaderInfo.removeEventListener(ProgressEvent.PROGRESS, this.onProgress);
 				this.file_loader.contentLoaderInfo.removeEventListener(Event.COMPLETE, this.onComplete);
 				this.file_loader.contentLoaderInfo.removeEventListener(IOErrorEvent.IO_ERROR, this.onIOError);
@@ -129,9 +134,10 @@ package com.faustocarrera
 
 		private function onProgress(evt:ProgressEvent):void
 		{
-			this.current_progress = evt.bytesLoaded / evt.bytesTotal;
+			//this.current_progress = evt.bytesLoaded / evt.bytesTotal;
+			this.current_progress = this.counter / this.total_files;
 			if (this.verbosity) {
-				trace("percent loaded: "+this.current_progress);
+				trace("percent loaded: " + this.current_progress);
 			}
 			dispatchEvent(new Event("onLoaderProgress"));
 		}
@@ -139,7 +145,6 @@ package com.faustocarrera
 		private function onComplete(evt:Event):void
 		{
 			this.current_container.addChild(evt.target.content);
-			dispatchEvent(new Event("onLoaderComplete"));
 			this.nextFile();
 		}
 
